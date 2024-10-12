@@ -15,7 +15,7 @@ amqp.connect(RABBITMQ_URL, (error0, connection) => {
         }
 
         const queue = QUEUE_NAME;
-        const msg = process.argv.slice(2).join(' ') || "Hello....World!";
+        const msg = process.argv.slice(2).join(' ') || "Hello World!";
 
         channel.assertQueue(queue, {
           durable: true
