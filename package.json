@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "producer": "ts-node src/producer.ts",
+    "producer": "ts-node src/producer.ts $1",
     "consumer": "ts-node src/consumer.ts",
     "test": "mocha -r ts-node/register tests/**/*.ts"
   },

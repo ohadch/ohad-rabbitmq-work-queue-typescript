@@ -15,12 +15,15 @@ amqp.connect(RABBITMQ_URL, (error0, connection) => {
         }
 
         const queue = QUEUE_NAME;
-        const message = 'Hello World!';
+        const msg = process.argv.slice(2).join(' ') || "Hello....World!";
 
-        channel.assertQueue(queue, {durable: false});
-        channel.sendToQueue(queue, Buffer.from(message));
-
-        console.log(`Sent: ${message}`);
+        channel.assertQueue(queue, {
+          durable: true
+        });
+        channel.sendToQueue(queue, Buffer.from(msg), {
+          persistent: true
+        });
+        console.log(" [x] Sent '%s'", msg);
     });
 
     setTimeout(() => {
